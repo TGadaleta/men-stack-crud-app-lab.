@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test</title>
-  </head>
-  <body>
-    <h1><%= planet.name %></h1>
-    <h3>Type: <%= planet.type %></h3>
-    <h3>Size: <%= planet.radius %> miles</h3>
-    <h3>Orbit: <%= planet.orbit %> miles</h3>
-    <h3>Moons: <%= planet.moons %></h3>
-    <form action="/planets/<%= planet._id %>/edit" method="GET">
-      <button type="submit">Edit Planet</button>
-    </form>
-    <form action="/planets/<%= planet._id %>/?_method=DELETE" method="POST">
-      <button type="submit">Delete Planet</button>
-    </form>
 
-    <a href="/planets">Back to Planets</a>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test</title>
+</head>
+
+<body>
+  <h1><%= planet.name %></h1>
+  <h3>Type: <%= planet.type %></h3>
+  <h3>Size: <%= planet.radius %> miles</h3>
+  <h3>Orbit: <%= planet.orbit %> miles</h3>
+  <h3>Moons: <%= planet.moons %></h3>
+  <form action="/planets/<%= planet._id %>/edit" method="GET">
+    <button type="submit">Edit Planet</button>
+  </form>
+  <a href="/planets">Back to Planets</a>
+</body>
+
 </html>

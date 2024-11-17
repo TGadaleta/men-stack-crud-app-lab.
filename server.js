@@ -39,7 +39,7 @@ app.get("/planets", async (req, res) => {
   }
 });
 
-// Display single planet
+// Display single planet route
 app.get("/planets/:planetId", async (req, res) => {
   try {
     const id = req.params.planetId;
@@ -51,7 +51,7 @@ app.get("/planets/:planetId", async (req, res) => {
   }
 });
 
-//Display edit planet form
+//Display edit planet form route
 app.get("/planets/:planetId/edit", async (req, res) => {
   try {
     const id = req.params.planetId;
@@ -89,6 +89,16 @@ app.put("/planets/:planetId", async (req, res) => {
 });
 
 //DELETE
+app.delete("/planets/:planetId", async (req, res) => {
+  try {
+    const id = req.params.planetId;
+    const deletedPlanet = await Planet.findByIdAndDelete(id);
+    res.status(200).redirect("/planets");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Could not delete the planet");
+  }
+});
 
 //Create express service
 app.listen(3000, () => {
