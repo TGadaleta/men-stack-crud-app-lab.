@@ -44,7 +44,8 @@ app.get("/planets/:planetId", async (req, res) => {
   try {
     const id = req.params.planetId;
     const planet = await Planet.findById(id);
-    res.status(200).render("/planets/show.ejs", { planet: planet });
+    console.log(planet)
+    res.status(200).render("planets/show.ejs", { planet: planet });
   } catch (error) {
     console.error(error);
     res.status(404).send("Planet not found");

@@ -11,13 +11,13 @@
     <h3>Size: <%= planet.radius %> miles</h3>
     <h3>Orbit: <%= planet.orbit %> miles</h3>
     <h3>Moons: <%= planet.moons %></h3>
-    <form action="/fruits/<%= fruit._id %>/edit" method="GET">
-      <button type="submit">Edit Fruit</button>
+    <form action="/planets/<%= planet._id %>/edit" method="GET">
+      <button type="submit">Edit Planet</button>
     </form>
-    <form action="/fruits/<%= fruit._id %>/?_method=DELETE" method="POST">
-      <button type="submit">Delete Fruit</button>
+    <form action="/planets/<%= planet._id %>/?_method=DELETE" method="POST">
+      <button type="submit">Delete Planet</button>
     </form>
 
-    <a href="/fruits">Back to Fruits</a>
+    <a href="/planets">Back to Planets</a>
   </body>
 </html>
