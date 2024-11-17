@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //Server Routes
 //GET
+//Index route
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
@@ -38,16 +39,28 @@ app.get("/planets", async (req, res) => {
   }
 });
 
+// Display single planet
+app.get("/planets/:planetId", async (req, res) => {
+  try {
+    const id = req.params.planetId;
+    const planet = await Planet.findById(id);
+    res.status(200).render("/planets/show.ejs", { planet: planet });
+  } catch (error) {
+    console.error(error);
+    res.status(404).send("Planet not found");
+  }
+});
+
 //POST
 app.post("/planets", async (req, res) => {
-    try {
-      const newPlanet = await Planet.create(req.body);
-      res.status(200).redirect("/planets");
-    } catch (error) {
-      console.error(error);
-      res.status(418).send("There was an error with creating a new planet");
-    }
-  });
+  try {
+    const newPlanet = await Planet.create(req.body);
+    res.status(200).redirect("/planets");
+  } catch (error) {
+    console.error(error);
+    res.status(418).send("There was an error with creating a new planet");
+  }
+});
 
 //PUT
 

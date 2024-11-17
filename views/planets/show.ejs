@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+  </head>
+  <body>
+    <h1><%= planet.name %></h1>
+    <h3>Type: <%= planet.type %></h3>
+    <h3>Size: <%= planet.radius %> miles</h3>
+    <h3>Orbit: <%= planet.orbit %> miles</h3>
+    <h3>Moons: <%= planet.moons %></h3>
+    <form action="/fruits/<%= fruit._id %>/edit" method="GET">
+      <button type="submit">Edit Fruit</button>
+    </form>
+    <form action="/fruits/<%= fruit._id %>/?_method=DELETE" method="POST">
+      <button type="submit">Delete Fruit</button>
+    </form>
+
+    <a href="/fruits">Back to Fruits</a>
+  </body>
+</html>
