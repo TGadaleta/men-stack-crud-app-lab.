@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const planetSchema = mongoose.Schema({
   name: String,
   type: String,
-  size: Number,
+  radius: Number,
   orbit: Number,
   moons: Number,
 });
