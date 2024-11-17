@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Planet</title>
+</head>
+
+<body>
+  <h1>Edit <%= planet.name %></h1>
+  <form action="/planets/<%= planet._id %>/?_method=PUT" method="POST">
+    <label style="display: block" for="name">Name:</label>
+    <input type="text" name="name" id="name" value='<%= planet.name %>' required />
+    <label style="display: block" for="type">Type:</label>
+    <select name="type" id="type" required>
+      <option value="inner" <%= planet.type === 'inner' ? 'selected' : '' %>>Inner Planet</option>
+      <option value="outer" <%= planet.type === 'outer' ? 'selected' : '' %>>Outer Planet</option>
+      <option value="dwarf" <%= planet.type === 'dwarf' ? 'selected' : '' %>>Dwarf Planet</option>
+    </select>
+    <label style="display: block" for="radius">Size (radius):</label>
+    <input type="number" name="radius" id="radius" value='<%= planet.radius %>' required />
+    <span>miles</span>
+    <label style="display: block" for="orbit">Orbit (Earth days):</label>
+    <input type="number" name="orbit" id="orbit" value='<%= planet.orbit %>' required />
+    <span>days</span>
+    <label style="display: block" for="moons">Moons:</label>
+    <input type="number" name="moons" id="moons" value="<%= planet.moons %>" />
+    <button style="display: block" type="submit">Update Planet</button>
+  </form>
+  <a href="/planets">Back to Planets</a>
+</body>
+
+</html>

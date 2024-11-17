@@ -43,15 +43,25 @@ app.get("/planets", async (req, res) => {
 app.get("/planets/:planetId", async (req, res) => {
   try {
     const id = req.params.planetId;
-    const planet = await Planet.findById(id);
-    console.log(planet)
-    res.status(200).render("planets/show.ejs", { planet: planet });
+    const planetData = await Planet.findById(id);
+    res.status(200).render("planets/show.ejs", { planet: planetData });
   } catch (error) {
     console.error(error);
     res.status(404).send("Planet not found");
   }
 });
 
+//Display edit planet form
+app.get("/planets/:planetId/edit", async (req, res) => {
+  try {
+    const id = req.params.planetId;
+    const planetData = await Planet.findById(id);
+    res.status(200).render("planets/edit.ejs", { planet: planetData });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Cannot load the edit form");
+  }
+});
 //POST
 app.post("/planets", async (req, res) => {
   try {
@@ -64,6 +74,19 @@ app.post("/planets", async (req, res) => {
 });
 
 //PUT
+app.put("/planets/:planetId", async (req, res) => {
+  try {
+    const id = req.params.planetId;
+    const updateData = req.body;
+    const updatedPlanet = await Planet.findByIdAndUpdate(id, updateData, {
+      new: true,
+    });
+    res.status(200).redirect("/planets")
+  } catch (error) {
+    console.error(error);
+    res.status(501).send("Error updating planet");
+  }
+});
 
 //DELETE
 
